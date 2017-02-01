@@ -36,7 +36,9 @@ A convolution matrix is simply a matrix of factors. It can be "applied" to a pix
 
 Applying the matrix to every pixel of an image can give a lot of varying results. If all the values of the matrix are the same, the result would be a very basic blur.
 
-Such matrices can be used to sharpen or blur an image, apply the filters in Instagram, but also to make some patterns (vertical lines) more apparent. This capability is used in convolutional neural networks, to detect patters and then patterns of patterns.
+Such matrices can be used to sharpen or blur an image, apply the filters in Instagram, but also to make some patterns (vertical lines) more apparent. This capability is used in convolutional neural networks, to detect patterns, and then patterns of patterns.
+
+The sum of every values of the the matrix should usually be equal to 1, as any other value would make the image brighter or darker every time it is applied.
 
 ##The RAISR approach
 ![alt tag](images/image7.png)
@@ -44,15 +46,15 @@ Such matrices can be used to sharpen or blur an image, apply the filters in Inst
 
 Matrices can effectively increase details, but it's hard to know if we are just increasing noise, or actual features of the image. What made this approach more interesting than a simple sharpen filter is the fact that multiple very different matrices will be used all over the image.
 
-The first step is to cut the image into a lot of small buckets, and to do what is called an Eigenanalysis. It is a quite complicated process, but the important fact is that it gives the angle and the strength of the gradient in the small bucket. A strong gradient is a signal that the current pixel bucket is part of an important part of the image (for example a strand of hair, the horizon, or cables hanging).
+The first step is to cut the image into a lot of small buckets, and to do what is called an Eigenanalysis. It is a quite complicated process, but the important fact is that it gives the angle and the strength of the gradient in the small bucket. A strong gradient is a signal that the current pixel bucket is part of an important part of the image (for example a strand of hair, facial features, the horizon, or building windows).
 
- By comparing each bucket with its neighbor, we can get another value called "coherence". If a bucket is not coherent, it might just be a speck, or other feature that are hard to deduce information from.
+By comparing each bucket with its neighbor, we can get another value called "coherence". If a bucket is not coherent, it might just be a speck, or any other feature that is hard to deduce information from.
 
 The team at google then cut hundred of millions of those buckets, calculated their three parameters, and used machine learning to deduce the best convolution matrix for each of the parameters combinations.
 
 Those convolution matrices can then be applied to any picture to create an excellent super resolution algorithm.
 
-The algorithm can then be bettered by using a census transform (to make edges appear) on both the original and final pictures. The difference between the number of edges on both can be used to scale-down the effects of the RAISR algorithms to avoid increasing too much noise on a blurry picture.
+The algorithm can then be bettered by using a census transform (to make edges appear) on both the original and final pictures. The difference between the number of edges on both can be used to scale-down the effects of the RAISR algorithms to avoid increasing too much noise on a blurry picture, or to use it's full power on another.
 
 ##Advantages
 ![alt tag](images/image9.png)
@@ -62,5 +64,8 @@ The only algorithms that stand up to RAISR are neural-network based, and very sl
 
 Matrices can be trained on a specific set of images to be optimized for specific purposes, such as removing JPG compression artifacts, as seen in the example pictures.
 
-Louis Garczynski
+-- Louis Garczynski --
+
 louis.roc@gmail.com
+
+Source: https://arxiv.org/abs/1606.01299
