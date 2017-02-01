@@ -1,6 +1,6 @@
-# RAISR
-## Rapid and Accurate Image Super Resolution
-![alt tag](images/image1.tiff)
+#RAISR
+##Rapid and Accurate Image Super Resolution
+![alt tag](images/image1.png)
 
 Super Resolution is a common and historically important problem in computer science.
 It is heavy related with data analysis and interpolation.
@@ -11,10 +11,10 @@ Algorithms can go from very basic and quick to very complex and slow, and all ha
 
 For example, the small picture could be a scaled-down version of the real picture, to save on bandwidth. The small picture could also have simply been taken by a bad camera, and in this situation the "true" picture doesn't exist.
 
-## Basic algorithms
-![alt tag](images/image2.tiff)
-![alt tag](images/image3.tiff)
-![alt tag](images/image4.tiff)
+##Basic algorithms
+![alt tag](images/image2.png)
+![alt tag](images/image3.png)
+![alt tag](images/image4.png)
 
  There are three common interpolation methods for scaling images. They all create a mathematical representation of the space between the pixels, so that any part of the picture can be more-or-less accurately polled from, even if it falls between two pixel values.
 
@@ -26,9 +26,9 @@ For example, the small picture could be a scaled-down version of the real pictur
 
  Recent browsers usually use either bilinear or bicubic. While there is a performance difference, it is negligible.
 
-## Convolution Matrices
-![alt tag](images/image5.tiff)
-![alt tag](images/image6.tiff)
+##Convolution Matrices
+![alt tag](images/image5.png)
+![alt tag](images/image6.png)
 
 Before we can continue, we need to approach the concept of convolution matrices.
 
@@ -38,7 +38,7 @@ Applying the matrix to every pixel of an image can give a lot of varying results
 
 Such matrices can be used to sharpen or blur an image, apply the filters in Instagram, but also to make some patterns (vertical lines) more apparent. This capability is used in convolutional neural networks, to detect patters and then patterns of patterns.
 
-## The RAISR approach
+##The RAISR approach
 ![alt tag](images/image7.png)
 ![alt tag](images/image8.png)
 
@@ -54,7 +54,7 @@ Those convolution matrices can then be applied to any picture to create an excel
 
 The algorithm can then be bettered by using a census transform (to make edges appear) on both the original and final pictures. The difference between the number of edges on both can be used to scale-down the effects of the RAISR algorithms to avoid increasing too much noise on a blurry picture.
 
-## Advantages
+##Advantages
 ![alt tag](images/image9.png)
 ![alt tag](images/image10.png)
 
